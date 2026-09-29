@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBS — Shershah, Bolton & Saddar | Karachi Markets Online</title>
+<meta name="description" content="Shop products sourced from Karachi's Shershah, Bolton Market and Saddar. Order online or by phone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=4">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0e3b3c">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SBS">
+</head>
+<body>
+
+<div class="topbar">
+  <span data-i18n="topbar"></span>
+  <a href="tel:03456713007">0345 6713007</a>
+  <span class="dot">•</span>
+  <a href="https://wa.me/923456713007" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="/">
+      <span class="logo-mark">SBS</span>
+      <span class="logo-text"><b>Shershah · Bolton · Saddar</b><small data-i18n="tagline"></small></span>
+    </a>
+    <div class="search">
+      <input type="search" id="searchBox" data-i18n-ph="searchPh" aria-label="Search">
+    </div>
+    <div class="header-actions">
+      <button class="btn accent" id="installBtn" hidden data-i18n="installApp"></button>
+      <button class="btn ghost" id="myOrdersBtn" data-i18n="myOrders"></button>
+      <button class="btn ghost" id="langBtn">اردو</button>
+      <button class="btn primary" id="cartBtn"><span data-i18n="cart"></span> <span class="badge" id="cartCount">0</span></button>
+    </div>
+  </div>
+  <nav class="cats wrap" id="categoryNav" aria-label="Categories"></nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n="heroTitle"></h1>
+      <p class="hero-sub" data-i18n="heroSub"></p>
+      <div class="hero-cta">
+        <a class="btn accent lg" href="#products" data-i18n="shopNow"></a>
+        <a class="btn outline-light lg" href="https://wa.me/923456713007" target="_blank" rel="noopener" data-i18n="orderWa"></a>
+      </div>
+    </div>
+    <div class="market-cards" id="marketCards"></div>
+  </div>
+</section>
+
+<section class="trust wrap">
+  <div><b data-i18n="t1h"></b><span data-i18n="t1p"></span></div>
+  <div><b data-i18n="t2h"></b><span data-i18n="t2p"></span></div>
+  <div><b data-i18n="t3h"></b><span data-i18n="t3p"></span></div>
+</section>
+
+<main class="wrap" id="products">
+  <div class="section-head">
+    <h2 data-i18n="latest"></h2>
+    <span class="count" id="resultCount"></span>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="logo"><span class="logo-mark">SBS</span><span class="logo-text"><b>Shershah · Bolton · Saddar</b></span></div>
+      <p data-i18n="footAbout"></p>
+    </div>
+    <div>
+      <h4 data-i18n="footMarkets"></h4>
+      <p>Shershah<br>Bolton Market<br>Saddar</p>
+    </div>
+    <div>
+      <h4 data-i18n="footContact"></h4>
+      <p><a href="tel:03456713007">0345 6713007</a><br><a href="https://wa.me/923456713007" target="_blank" rel="noopener">WhatsApp</a></p>
+    </div>
+  </div>
+  <div class="wrap copyright">© <span id="year"></span> SBS. <span data-i18n="rights"></span> · <a href="/privacy.html">Privacy Policy</a></div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cartPanel" aria-label="Cart">
+  <div class="drawer-head"><b data-i18n="yourCart"></b><button class="icon-btn" id="closeCart" aria-label="Close">✕</button></div>
+  <div class="drawer-body">
+    <div id="cartItems"></div>
+    <div class="cart-total" id="cartTotalRow"><span data-i18n="total"></span><b id="cartTotal">PKR 0</b></div>
+    <form id="orderForm" class="order-form" autocomplete="on">
+      <label data-i18n="lblCustName"></label><input id="custName" type="text" required>
+      <label data-i18n="lblCustPhone"></label><input id="custPhone" type="tel" required>
+      <label data-i18n="lblCustAddr"></label><input id="custAddr" type="text" required>
+      <p class="note" data-i18n="codNote"></p>
+      <p class="error" id="orderError" hidden></p>
+      <button class="btn primary block" type="submit" data-i18n="placeOrder"></button>
+    </form>
+    <div class="success" id="orderSuccess" hidden></div>
+  </div>
+</aside>
+
+<div class="modal-bg" id="myOrdersModalBg">
+  <div class="modal">
+    <div class="drawer-head"><b data-i18n="myOrdersTitle"></b><button class="icon-btn" data-close="myOrdersModalBg" aria-label="Close">✕</button></div>
+    <label data-i18n="lblPhoneLookup"></label>
+    <input id="lookupPhone" type="tel">
+    <button class="btn primary block" id="lookupBtn" data-i18n="find" style="margin-top:.8rem"></button>
+    <div id="myOrdersList" style="margin-top:1rem"></div>
+  </div>
+</div>
+
+<script src="/js/app.js?v=4"></script>
+</body>
+</html>

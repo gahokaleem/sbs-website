@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBS Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/admin.css?v=3">
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-wrap" id="loginView">
+  <form class="login-card" id="loginForm">
+    <div class="logo-mark">SBS</div>
+    <h1>Admin login</h1>
+    <label>Username</label><input id="loginUser" type="text" autocomplete="username" required>
+    <label>Password</label><input id="loginPass" type="password" autocomplete="current-password" required>
+    <p class="error" id="loginError" hidden></p>
+    <button class="btn primary block" type="submit">Log in</button>
+    <a class="back" href="/">← Back to store</a>
+  </form>
+</div>
+
+<!-- Dashboard -->
+<div id="appView" hidden>
+  <header class="bar">
+    <div class="brand"><span class="logo-mark sm">SBS</span><b>Admin</b></div>
+    <nav>
+      <button class="tab active" data-tab="orders">Orders <span class="pill" id="newCount">0</span></button>
+      <button class="tab" data-tab="products">Products</button>
+      <button class="tab" data-tab="add">Add product</button>
+      <button class="tab" data-tab="account">Account</button>
+    </nav>
+    <div class="right"><a class="btn ghost" href="/" target="_blank">View store</a><button class="btn ghost" id="logoutBtn">Log out</button></div>
+  </header>
+
+  <main class="content">
+    <section id="tab-orders">
+      <div class="head"><h2>Orders</h2>
+        <select id="statusFilter"><option value="">All statuses</option><option>New</option><option>Processing</option><option>Delivered</option><option>Cancelled</option></select>
+      </div>
+      <div id="ordersList"></div>
+    </section>
+
+    <section id="tab-products" hidden>
+      <div class="head"><h2>Products</h2><span class="muted" id="prodCount"></span></div>
+      <div id="productsList" class="plist"></div>
+    </section>
+
+    <section id="tab-add" hidden>
+      <div class="head"><h2>Add a product</h2></div>
+      <form class="panel" id="addForm">
+        <label>Product name</label><input id="pName" required>
+        <label>Price (PKR)</label><input id="pPrice" type="number" min="0" step="1" required>
+        <label>Market</label><select id="pMarket"><option>Shershah</option><option>Bolton Market</option><option>Saddar</option></select>
+        <label>Category</label>
+        <select id="pCategory"><option>Electronics &amp; Parts</option><option>Mobiles &amp; Accessories</option><option>Clothing</option><option>Hardware &amp; Tools</option><option>Home &amp; Kitchen</option><option>Auto Parts</option><option>Other</option></select>
+        <label>Photo</label><input id="pImage" type="file" accept="image/*">
+        <img id="preview" alt="" hidden>
+        <p class="error" id="addError" hidden></p>
+        <p class="ok" id="addOk" hidden>Product added.</p>
+        <button class="btn primary" type="submit">Add product</button>
+      </form>
+    </section>
+    <section id="tab-account" hidden>
+      <div class="head"><h2>Change login</h2></div>
+      <form class="panel" id="pwForm">
+        <label>Current password</label><input id="curPass" type="password" autocomplete="current-password" required>
+        <label>New username (leave as is to keep it)</label><input id="newUser" type="text" autocomplete="username">
+        <label>New password (at least 8 characters)</label><input id="newPass" type="password" minlength="8" autocomplete="new-password" required>
+        <p class="error" id="pwError" hidden></p>
+        <p class="ok" id="pwOk" hidden>Saved. Use the new details next time you log in.</p>
+        <button class="btn primary" type="submit">Save new login</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<script src="/js/admin.js?v=3"></script>
+</body>
+</html>
